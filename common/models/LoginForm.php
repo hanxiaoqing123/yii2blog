@@ -1,8 +1,10 @@
 <?php
+
 namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use backend\models\TbUserBackend as User;
 
 /**
  * Login form
@@ -56,9 +58,10 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            //校验成功后，session保存用户信息
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 
