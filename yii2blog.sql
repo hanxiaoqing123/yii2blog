@@ -33,7 +33,7 @@ CREATE TABLE `tbTest` (
 
 insert into tbTest(c1,c2,c3,c4)  values ('aaaa','bbb','cc','d');
 insert into tbTest(c1,c2,c3,c4)  values ('eeee','fff',NULL,NULL);
-/*******************************rbac的4长表******************************************/
+/*******************************rbac的4张表******************************************/
 DROP TABLE IF EXISTS `auth_item`;
 CREATE TABLE `auth_item` (
   `name` varchar(64)  NOT NULL  COMMENT '名称',

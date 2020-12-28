@@ -13,6 +13,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    //'as myBehavior2' => \backend\components\AccessControl::class,
     'components' => [
         //配置主题
         'assetManager' => [
