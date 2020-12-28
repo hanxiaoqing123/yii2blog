@@ -26,7 +26,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'backend\models\TbUserBackend',
+            'identityClass' => 'backend\models\UserBackend',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],

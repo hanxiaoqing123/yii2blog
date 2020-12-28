@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\TbUserBackend;
+use backend\models\UserBackend;
 
 /**
- * TbUserBackendSearch represents the model behind the search form of `backend\models\TbUserBackend`.
+ * UserBackendSearch represents the model behind the search form of `backend\models\UserBackend`.
  */
-class TbUserBackendSearch extends TbUserBackend
+class UserBackendSearch extends UserBackend
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class TbUserBackendSearch extends TbUserBackend
      */
     public function search($params)
     {
-        $query = TbUserBackend::find();
+        $query = UserBackend::find();
 
         // add conditions that should always apply here
 

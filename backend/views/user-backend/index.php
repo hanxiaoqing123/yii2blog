@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\TbUserBackendSearch */
+/* @var $searchModel backend\models\UserBackendSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tb User Backends';

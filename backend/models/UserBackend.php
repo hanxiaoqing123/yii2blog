@@ -7,7 +7,7 @@ use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 
 /**
- * This is the model class for table "tbUserBackend".
+ * This is the model class for table "UserBackend".
  *
  * @property int $id 用户主键
  * @property string $userName 昵称
@@ -17,14 +17,14 @@ use yii\web\IdentityInterface;
  * @property string $createdAt 创建时间
  * @property string $updatedAt 更新时间
  */
-class TbUserBackend extends \yii\db\ActiveRecord implements IdentityInterface
+class UserBackend extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'tbUserBackend';
+        return 'user_backend';
     }
 
     /**

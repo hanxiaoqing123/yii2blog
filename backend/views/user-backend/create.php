@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\TbUserBackend */
+/* @var $model backend\models\UserBackend */
 
 $this->title = 'Create Tb User Backend';
 $this->params['breadcrumbs'][] = ['label' => 'Tb User Backends', 'url' => ['index']];

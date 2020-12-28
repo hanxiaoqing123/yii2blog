@@ -4,14 +4,15 @@ namespace backend\controllers;
 
 use backend\models\SignupForm;
 use Yii;
-use backend\models\TbUserBackend;
-use backend\models\TbUserBackendSearch;
+use backend\models\UserBackend;
+use backend\models\UserBackendSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserBackendController implements the CRUD actions for TbUserBackend model.
+ * UserBackendController implements the CRUD actions for UserBackend model.
  */
 class UserBackendController extends Controller
 {
@@ -27,16 +28,33 @@ class UserBackendController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'delete', 'signup'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->id == 1 ? true : false;
+                        },
+                        'allow' => true,
+                    ]
+                ],
+            ]
         ];
     }
 
     /**
-     * Lists all TbUserBackend models.
+     * Lists all UserBackend models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TbUserBackendSearch();
+        $searchModel = new UserBackendSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render(
@@ -49,7 +67,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Displays a single TbUserBackend model.
+     * Displays a single UserBackend model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -65,13 +83,13 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Creates a new TbUserBackend model.
+     * Creates a new UserBackend model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TbUserBackend();
+        $model = new UserBackend();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -86,7 +104,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Updates an existing TbUserBackend model.
+     * Updates an existing UserBackend model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -109,7 +127,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Deletes an existing TbUserBackend model.
+     * Deletes an existing UserBackend model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -123,15 +141,15 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Finds the TbUserBackend model based on its primary key value.
+     * Finds the UserBackend model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TbUserBackend the loaded model
+     * @return UserBackend the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TbUserBackend::findOne($id)) !== null) {
+        if (($model = UserBackend::findOne($id)) !== null) {
             return $model;
         }
 
